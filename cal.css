@@ -1,0 +1,48 @@
+body{
+    background-color: black;
+    color: white;
+}
+div{
+    border: 2px solid red;
+    margin-left:25%;
+    margin-right: 25%;
+    height: 260px;
+}
+input{
+    width: 250px;
+    height: 25px;
+    background-color: black;
+    border: none;
+    border-bottom: 3px solid red;
+    color: white;
+}
+::placeholder{
+    color: rgba(255, 255, 255, 0.719);
+}
+.bty{
+    background-color: rgb(172, 44, 44);
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+}
+button{
+    margin: 3px;
+    width: 60px;
+    background-color: black;
+    border-radius: 50px;
+    border: 2px solid white;
+    color: white;
+}
+button:hover{
+    background-color: white;
+    border: 2px solid rgb(172, 44, 44);
+    transition: 0.3s ease;
+    color: black;
+}
+.bty:hover{
+    background-color: black;
+    border: 2px solid rgb(172, 44, 44);
+    color: white;
+    transition: 0.3s ease;
+}
