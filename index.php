@@ -15,11 +15,12 @@
     <div class="login form">
       <header>Login</header>
       <form action="signin_process.php" method="post">
-        <input type="email" name="useremail" placeholder="Enter your email">
-        <input type="password" name="userpass" placeholder="Enter your password">
+        <input type="email" name="useremail" placeholder="Enter your email" required>
+        <input type="password" name="userpass" placeholder="Enter your password" required>
         <a href="#">Forgot password?</a>
         <input type="submit" class="button" value="Login">
       </form>
+      
       <div class="signup">
         <span class="signup">Don't have an account?
          <label for="check">Signup</label>
