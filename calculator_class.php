@@ -31,9 +31,9 @@
     $multiplication = new Calculator();
     $division = new Calculator();
     echo "Addition is: ".$addition->add(2,3)."<br>";
-    echo "Subtraction is: ".$subtraction->add(44,4)."<br>";
-    echo "Multiplication is: ".$multiplication->add(3,5)."<br>";
-    echo "Division is: ".$division->add(3,6);
+    echo "Subtraction is: ".$subtraction->sub(44,4)."<br>";
+    echo "Multiplication is: ".$multiplication->multiply(3,5)."<br>";
+    echo "Division is: ".$division->divide(3,6);
     
      ?>
      
