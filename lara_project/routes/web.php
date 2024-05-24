@@ -1,57 +1,32 @@
 <?php
 
+use App\Http\Controllers\ExamController;
 use Illuminate\Support\Facades\Route;
-
-
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\FirstController;
+use App\Http\Controllers\DemoController;
+use App\Models\Customer;
+Route::get('/Register',[DemoController::class,'index']);
+Route::post('/Register',[DemoController::class,'Register']);
+Route::get('/c ustomer' ,function(){
+$customer =customer::all();
+echo "<pre>";
+print_r($customer->toArray());
+});
+Route::get('/hello', function () {
+    return view('Hello');
 });
 
-Route::get('/message', function () {
-    return "Message ";
-});
 
-Route::get('/posts/{filter}/social/{postId}', function ($filter, $id) {
-    return $id . " posts with filter " . $filter;
-});
 
-// Route::get("/posts", function () use ($posts) {
-//     return response()->json($posts);
+Route::resource('exams', ExamController::class);
+
+// Route::get('/exam', function () {
+//     return view('exam');
 // });
 
-
-$posts = array();
-
-$posts[] = new Post(1, "First Post", "This is the content of the first post.");
-$posts[] = new Post(2, "Second Post", "This is the content of the second post.");
-$posts[] = new Post(3, "Third Post", "This is the content of the third post.");
-
-
-$message = "https://www.google.com.pk";
-Route::get("/news", function () use($posts) {
-    return view("news", [ "posts"=> $posts]);   
-
-});
-
-
-
-
-
-
-class Post
-{
-    public $id;
-    public $title;
-    public $content;
-
-    // Constructor
-    public function __construct($id, $title, $content)
-    {
-        $this->id = $id;
-        $this->title = $title;
-        $this->content = $content;
-    }
-}
-
-
-?>
+Route::get("/exam", [ExamController::class, 'index'])->name("exam.index");
+Route::get('/exam/create', [ExamController::class, 'create'])->name("exam.create");
+Route::post('/exam', [ExamController::class, 'store'])->name("exam.store");
+Route::get("/exam/{id}", [ExamController::class, 'show'])->name("exam.edit");
+Route::put("/exam/{id}", [ExamController::class, 'update'])->name("exam.update");
+Route::delete("/exam/{id}", [ExamController::class, 'destroye'])->name("exam.delete");

@@ -1,14 +1,15 @@
+extends()
+
 <div>
     <h2>Latest news arround the world</h2>
 
-    @if (count($posts) > 0)
+    @if ($newsPosts)
     <p>Posts Available</p>
     @endif
 
-    @foreach ($posts as $post )
-        <li>$post->title</li>
+    @foreach ($newsPosts as $post )
+    <li><a href="{{ route('news.show', ['id' => $post->id]) }}">{{ $post->title }}</a></li><br>
     @endforeach
     
-    @endfor
 
 </div>
