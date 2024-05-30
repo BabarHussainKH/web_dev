@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\AuthMiddleware;
 use App\Models\Book;
 use App\Models\Exam;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Polyfill\Intl\Idn\Idn;
 
@@ -14,6 +16,15 @@ class ExamController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+    public function __construct()
+    {
+        // $this->middleware(AuthMiddleware::class);
+        // $this->middleware('MyAuth');
+
+    }
+
     public function index()
     {
         $exams = Exam::all(); // Retrieve all exams from the database
@@ -34,7 +45,7 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     { {
-            $validate =  $request->validate([
+            $validate = $request->validate([
                 'title' => 'required|string|max:25',
                 'description' => 'required|string|max:500',
                 'image' => 'required', // Example validation rules
@@ -70,7 +81,7 @@ class ExamController extends Controller
      */
     public function show($id)
     {
-        $exam  = Exam::findOrFail($id);
+        $exam = Exam::findOrFail($id);
         return view("exams.show", compact("exam"));
     }
 
@@ -104,11 +115,11 @@ class ExamController extends Controller
      */
     public function destroye($id)
     {
-       
-            $exam = Exam::findOrFail($id);
-            $exam->delete();
 
-            return redirect()->route('exam.index')->with('success', 'Exam deleted successfully.');
-       
+        $exam = Exam::findOrFail($id);
+        $exam->delete();
+
+        return redirect()->route('exam.index')->with('success', 'Exam deleted successfully.');
+
     }
 }
